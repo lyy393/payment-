@@ -448,29 +448,23 @@ function showSuccessPopup() {
 
 function showErrorPopup() {
     const popup = document.getElementById("successPopup");
-
     popup.innerHTML = `
         <span class="checkmark" style="color:red;">✖</span>
         <h3 style="color:red;">Gagal Mengirim!</h3>
         <p style="color:#ffb4b4;">Coba lagi nanti.</p>
     `;
-
     popup.classList.add("show");
-    popup.style.animation = "fadeError .4s";
 
     setTimeout(() => {
         popup.classList.remove("show");
-        popup.classList.add("hide");
-
-        setTimeout(() => {
-            popup.innerHTML = `
-                <span class="checkmark">✔</span>
-                <h3>Pesan terkirim!</h3>
-                <p>Terima kasih, support akan membalas segera.</p>
-            `;
-        }, 500);
+        popup.innerHTML = `
+            <span class="checkmark">✔</span>
+            <h3>Pesan terkirim!</h3>
+            <p>Terima kasih, support akan membalas segera.</p>
+        `;
     }, 2500);
 }
+
 </script>
   <!-- PAYMENT -->
   <section id="payment" class="page" aria-label="Payment">
