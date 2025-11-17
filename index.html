@@ -277,6 +277,26 @@ background:var(--brand);color:#fff;cursor:pointer;transition:transform .2s}
   padding: 12px;
 }
 
+/* ============================= */
+/* ANIMASI BERHASIL & GAGAL     */
+/* ============================= */
+
+/* Animasi untuk pesan berhasil */
+@keyframes fadeSuccess {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Animasi untuk pesan gagal (shake) */
+@keyframes fadeError {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+  
 </style>
 </head>
 <body>
@@ -375,13 +395,6 @@ ${pesan}`;
     });
 });
 </script>
-
-<style>
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-</style>
   <!-- PAYMENT -->
   <section id="payment" class="page" aria-label="Payment">
     <div class="top-bar">
