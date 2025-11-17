@@ -230,7 +230,7 @@ background:var(--brand);color:#fff;cursor:pointer;transition:transform .2s}
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
 }
- /* SUPPORT SECTION - CARD */
+/* SUPPORT SECTION - CARD */
 .support-section {
   margin-top: 35px;
   padding: 24px;
@@ -281,13 +281,13 @@ background:var(--brand);color:#fff;cursor:pointer;transition:transform .2s}
 /* ANIMASI BERHASIL & GAGAL     */
 /* ============================= */
 
-/* Animasi untuk pesan berhasil */
+/* Animasi pesan berhasil (fade + naik) */
 @keyframes fadeSuccess {
   0% { opacity: 0; transform: translateY(6px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Animasi untuk pesan gagal (shake) */
+/* Animasi pesan gagal (shake) */
 @keyframes fadeError {
   0% { transform: translateX(0); }
   20% { transform: translateX(-4px); }
@@ -295,6 +295,48 @@ background:var(--brand);color:#fff;cursor:pointer;transition:transform .2s}
   60% { transform: translateX(-4px); }
   80% { transform: translateX(4px); }
   100% { transform: translateX(0); }
+}
+
+/* ============================= */
+/* POPUP PESAN BERHASIL         */
+/* ============================= */
+
+.success-popup {
+  display: none;
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 380px;
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px var(--shadow);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  color: var(--text);
+  animation: fadeSuccess 0.4s ease;
+  z-index: 9999;
+}
+
+.success-popup .checkmark {
+  font-size: 50px;
+  color: #4DFF4D;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.success-popup h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.success-popup p {
+  font-size: 13px;
+  color: var(--muted);
 }
   
 </style>
