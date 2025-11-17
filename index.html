@@ -519,6 +519,17 @@ function copyText(text){
   });
 }
 
+  function downloadQris() {
+            const qrisUrl = 'https://files.catbox.moe/x5cnhm.jpg';
+            const link = document.createElement('a');
+            link.href = qrisUrl;
+            link.download = 'QRIS-Lyy.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('QRIS image downloaded!');
+  }
+  
 /* === Render Products === */
 const products = [
   { 
