@@ -341,6 +341,11 @@ background:var(--brand);color:#fff;cursor:pointer;transition:transform .2s}
 </style>
 </head>
 <body>
+  <div id="successPopup" class="success-popup">
+  <span class="checkmark">✔</span>
+  <h3>Pesan terkirim!</h3>
+  <p>Terima kasih, support akan membalas segera.</p>
+  </div>
 <!-- Audio -->
 <audio id="bgMusic" loop>
   <source src="https://cdn.jsdelivr.net/gh/lyy393/soundd@main/SaveTik.co_7506553253555883286.mp3" type="audio/mpeg">
@@ -373,29 +378,27 @@ background:var(--brand);color:#fff;cursor:pointer;transition:transform .2s}
   </section>
 
 <!-- CONTACT SUPPORT POPUP -->
-<div id="contactSection" class="contact-popup" style="display:none;">
-  <div class="glass-card" style="padding:20px; max-width:350px; width:90%;">
+<section id="contact" class="page">
+  <div class="support-section">
     <h2>Contact Support</h2>
-    <p>Silakan isi formulir berikut untuk menghubungi support.</p>
+    <p class="support-desc">Silakan isi formulir berikut untuk menghubungi support.</p>
 
-    <form id="supportForm">
-      <input type="text" id="nama" placeholder="Nama" required style="width:100%; margin:8px 0;">
-      <input type="email" id="email" placeholder="Email" required style="width:100%; margin:8px 0;">
-      <textarea id="pesan" placeholder="Pesan..." rows="4" required style="width:100%; margin:8px 0;"></textarea>
+    <form id="supportForm" class="support-form">
+      <input type="text" id="nama" placeholder="Nama" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <textarea id="pesan" placeholder="Pesan..." rows="4" required></textarea>
 
-      <button type="submit" class="anim-btn" style="width:100%;">Kirim Pesan</button>
+      <button type="submit" class="anim-btn support-btn">Kirim Pesan</button>
     </form>
 
-    <button onclick="closeContact()" style="margin-top:15px; width:100%;" class="anim-btn">Tutup</button>
+    <div id="support-result"></div>
   </div>
-</div>
+</section>
 
 
-<!-- SCRIPT CONTACT -->
 <script>
-// TELEGRAM FORM
-const botToken = "8355999281:AAGqZ3CjMVrBh4KfdwbcgEN8JqDw_tPZL2U";
-const chatId = "8058947668";
+const botToken = "BOT TOKEN KAMU";
+const chatId = "CHAT ID KAMU";
 
 document.getElementById("supportForm").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -421,17 +424,53 @@ document.getElementById("supportForm").addEventListener("submit", function(e) {
     .then(res => res.json())
     .then(data => {
         if (data.ok) {
-            alert("Pesan berhasil dikirim!");
+            showSuccessPopup();  
             document.getElementById("supportForm").reset();
-            closeContact();
         } else {
-            alert("Gagal mengirim pesan!");
+            showErrorPopup();
         }
     })
     .catch(() => {
-        alert("Terjadi kesalahan!");
+        showErrorPopup();
     });
 });
+
+function showSuccessPopup() {
+    const popup = document.getElementById("successPopup");
+    popup.classList.add("show");
+    popup.classList.remove("hide");
+
+    setTimeout(() => {
+        popup.classList.remove("show");
+        popup.classList.add("hide");
+    }, 2500);
+}
+
+function showErrorPopup() {
+    const popup = document.getElementById("successPopup");
+
+    popup.innerHTML = `
+        <span class="checkmark" style="color:red;">✖</span>
+        <h3 style="color:red;">Gagal Mengirim!</h3>
+        <p style="color:#ffb4b4;">Coba lagi nanti.</p>
+    `;
+
+    popup.classList.add("show");
+    popup.style.animation = "fadeError .4s";
+
+    setTimeout(() => {
+        popup.classList.remove("show");
+        popup.classList.add("hide");
+
+        setTimeout(() => {
+            popup.innerHTML = `
+                <span class="checkmark">✔</span>
+                <h3>Pesan terkirim!</h3>
+                <p>Terima kasih, support akan membalas segera.</p>
+            `;
+        }, 500);
+    }, 2500);
+}
 </script>
   <!-- PAYMENT -->
   <section id="payment" class="page" aria-label="Payment">
