@@ -402,53 +402,62 @@ document.getElementById("supportForm").addEventListener("submit", function(e) {
     const pesan = document.getElementById("pesan").value;
 
     const text = 
-`📩 *Form Support Baru*
+`📩 Form Baru Masuk
 👤 Nama: ${nama}
 📧 Email: ${email}
-💬 Pesan:
-${pesan}`;
+💬 Pesan: ${pesan}`;
 
     fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             chat_id: chatId,
-            text: text,
-            parse_mode: "Markdown"
+            text: text
         })
     })
-    .then(response => response.json())
-.then(data => {
+    .then(res => res.json())
+    .then(data => {
+        if (data.ok) {
+            showSuccessPopup();  
+            document.getElementById("supportForm").reset();
+        } else {
+            showErrorPopup();
+        }
+    })
+    .catch(() => {
+        showErrorPopup();
+    });
+});
 
-    // reset form
-    document.getElementById("supportForm").reset();
 
-    // popup
+function showSuccessPopup() {
     const popup = document.getElementById("successPopup");
-
-    popup.classList.remove("hide");
     popup.classList.add("show");
 
-    // auto hilang
     setTimeout(() => {
         popup.classList.remove("show");
-        popup.classList.add("hide");
-    }, 2800);
+    }, 2500);
+}
 
-})
-.catch(error => {
-    const msg = document.getElementById("support-result");
-
-    msg.innerHTML = `
-        <p style="
-            color:#ff4d4d;
-            font-weight: 600;
-            margin-top: 10px;
-            animation: fadeError .4s ease;
-        ">✗ Gagal mengirim pesan!</p>
+function showErrorPopup() {
+    const popup = document.getElementById("successPopup");
+    popup.innerHTML = `
+        <span class="checkmark" style="color:red;">✖</span>
+        <h3 style="color:red;">Gagal Mengirim!</h3>
+        <p style="color:#ffb4b4;">Coba lagi nanti.</p>
     `;
-});
-  </script>
+    popup.classList.add("show");
+
+    setTimeout(() => {
+        popup.classList.remove("show");
+        popup.innerHTML = `
+            <span class="checkmark">✔</span>
+            <h3>Pesan terkirim!</h3>
+            <p>Terima kasih, support akan membalas segera.</p>
+        `;
+    }, 2500);
+}
+</script>
   <!-- PAYMENT -->
   <section id="payment" class="page" aria-label="Payment">
     <div class="top-bar">
