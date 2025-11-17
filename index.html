@@ -358,8 +358,15 @@ ${pesan}`;
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById("support-result").innerHTML = 
-            "<p style='color:green;'>Pesan berhasil dikirim!</p>";
+        const msg = document.getElementById("support-result");
+
+        msg.innerHTML = `<p style="
+            color: #4eff8a;
+            font-weight: 600;
+            margin-top: 10px;
+            animation: fadeIn 0.6s ease;
+        ">✓ Berhasil mengirim pesan!</p>`;
+
         document.getElementById("supportForm").reset();
     })
     .catch(error => {
@@ -367,7 +374,14 @@ ${pesan}`;
             "<p style='color:red;'>Gagal mengirim pesan.</p>";
     });
 });
-          </script>
+</script>
+
+<style>
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
   <!-- PAYMENT -->
   <section id="payment" class="page" aria-label="Payment">
     <div class="top-bar">
