@@ -230,52 +230,52 @@ background:var(--brand);color:#fff;cursor:pointer;transition:transform .2s}
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
 }
- /* -- TEMPATKAN CSS SUPPORT SECTION DISINI -- */
+ /* SUPPORT SECTION - CARD */
+.support-section {
+  margin-top: 35px;
+  padding: 24px;
+  border-radius: 20px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  text-align: center;
+  box-shadow: 0 10px 30px var(--shadow);
+}
 
-  .support-section {
-    margin-top: 30px;
-    padding: 20px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    text-align: center;
-  }
+.support-section h2 {
+  font-size: 20px;
+  margin-bottom: 6px;
+  color: var(--text);
+}
 
-  .support-section h2 {
-    margin-bottom: 10px;
-    font-size: 22px;
-    color: #ffffff;
-  }
+.support-desc {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 15px;
+}
 
-  .support-desc {
-    margin-bottom: 15px;
-    font-size: 14px;
-    color: #cccccc;
-  }
+.support-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-  .support-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+.support-form input,
+.support-form textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-size: 14px;
+}
 
-  .support-form input,
-  .support-form textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.05);
-    color: white;
-    outline: none;
-    resize: none;
-  }
-
-  .support-btn {
-    width: 100%;
-    margin-top: 5px;
-  }
+.support-btn {
+  width: 100%;
+  margin-top: 5px;
+  padding: 12px;
+}
 
 </style>
 </head>
@@ -312,13 +312,20 @@ background:var(--brand);color:#fff;cursor:pointer;transition:transform .2s}
   </section>
 
   <!-- CONTACT SUPPORT SECTION -->
-<form id="contactForm">
-  <input type="text" id="nama" placeholder="Nama" required>
-  <input type="email" id="email" placeholder="Email" required>
-  <textarea id="pesan" placeholder="Pesan..." required></textarea>
+  <div class="support-section">
+  <h2>Contact Support</h2>
+  <p class="support-desc">Silakan isi formulir berikut untuk menghubungi support.</p>
 
-  <button type="submit">Kirim</button>
-</form>
+  <form id="supportForm" class="support-form">
+    <input type="text" id="nama" placeholder="Nama" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <textarea id="pesan" placeholder="Pesan..." rows="4" required></textarea>
+
+    <button type="submit" class="anim-btn support-btn">Kirim Pesan</button>
+  </form>
+
+  <div id="support-result"></div>
+  </div>
 
 <div id="result"></div>
 
