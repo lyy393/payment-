@@ -458,6 +458,19 @@ function showErrorPopup() {
     }, 2500);
 }
 </script>
+  <script>
+function openContact() {
+    document.getElementById("contactSection").style.display = "block";
+
+    // Kalau kamu punya halaman lain, tinggal ditutup juga:
+    if (document.getElementById("toolsSection")) {
+        document.getElementById("toolsSection").style.display = "none";
+    }
+    if (document.getElementById("aboutSection")) {
+        document.getElementById("aboutSection").style.display = "none";
+    }
+}
+  </script>
   <!-- PAYMENT -->
   <section id="payment" class="page" aria-label="Payment">
     <div class="top-bar">
