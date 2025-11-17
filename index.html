@@ -372,25 +372,54 @@ background:var(--brand);color:#fff;cursor:pointer;transition:transform .2s}
     </div>
   </section>
 
-<!-- CONTACT SUPPORT (DISSEMBUNYIKAN DEFAULT) -->
-<div class="support-section" id="contactSection" style="display:none;">
-  <h2>Contact Support</h2>
-  <p class="support-desc">Silakan isi formulir berikut untuk menghubungi support.</p>
+<!-- CONTACT SUPPORT POPUP -->
+<div id="contactSection" class="contact-popup" style="display:none;">
+  <div class="glass-card" style="padding:20px; max-width:350px; width:90%;">
+    <h2>Contact Support</h2>
+    <p>Silakan isi formulir berikut untuk menghubungi support.</p>
 
-  <form id="supportForm" class="support-form">
-    <input type="text" id="nama" placeholder="Nama" required>
-    <input type="email" id="email" placeholder="Email" required>
-    <textarea id="pesan" placeholder="Pesan..." rows="4" required></textarea>
+    <form id="supportForm">
+      <input type="text" id="nama" placeholder="Nama" required style="width:100%; margin:8px 0;">
+      <input type="email" id="email" placeholder="Email" required style="width:100%; margin:8px 0;">
+      <textarea id="pesan" placeholder="Pesan..." rows="4" required style="width:100%; margin:8px 0;"></textarea>
 
-    <button type="submit" class="anim-btn support-btn">Kirim Pesan</button>
-  </form>
+      <button type="submit" class="anim-btn" style="width:100%;">Kirim Pesan</button>
+    </form>
 
-  <div id="support-result"></div>
+    <button onclick="closeContact()" style="margin-top:15px; width:100%;" class="anim-btn">Tutup</button>
+  </div>
 </div>
 
-<div id="result"></div>
+<!-- CSS POPUP -->
+<style>
+.contact-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(5px);
+}
+</style>
 
+<!-- SCRIPT CONTACT -->
 <script>
+// BUAT BUKA POPUP
+function openContact() {
+  document.getElementById("contactSection").style.display = "flex";
+}
+
+// BUAT TUTUP POPUP
+function closeContact() {
+  document.getElementById("contactSection").style.display = "none";
+}
+
+// TELEGRAM FORM
 const botToken = "8355999281:AAGqZ3CjMVrBh4KfdwbcgEN8JqDw_tPZL2U";
 const chatId = "8058947668";
 
@@ -418,59 +447,18 @@ document.getElementById("supportForm").addEventListener("submit", function(e) {
     .then(res => res.json())
     .then(data => {
         if (data.ok) {
-            showSuccessPopup();  
+            alert("Pesan berhasil dikirim!");
             document.getElementById("supportForm").reset();
+            closeContact();
         } else {
-            showErrorPopup();
+            alert("Gagal mengirim pesan!");
         }
     })
     .catch(() => {
-        showErrorPopup();
+        alert("Terjadi kesalahan!");
     });
 });
-
-
-function showSuccessPopup() {
-    const popup = document.getElementById("successPopup");
-    popup.classList.add("show");
-
-    setTimeout(() => {
-        popup.classList.remove("show");
-    }, 2500);
-}
-
-function showErrorPopup() {
-    const popup = document.getElementById("successPopup");
-    popup.innerHTML = `
-        <span class="checkmark" style="color:red;">✖</span>
-        <h3 style="color:red;">Gagal Mengirim!</h3>
-        <p style="color:#ffb4b4;">Coba lagi nanti.</p>
-    `;
-    popup.classList.add("show");
-
-    setTimeout(() => {
-        popup.classList.remove("show");
-        popup.innerHTML = `
-            <span class="checkmark">✔</span>
-            <h3>Pesan terkirim!</h3>
-            <p>Terima kasih, support akan membalas segera.</p>
-        `;
-    }, 2500);
-}
 </script>
-  <script>
-function openContact() {
-    document.getElementById("contactSection").style.display = "block";
-
-    // Kalau kamu punya halaman lain, tinggal ditutup juga:
-    if (document.getElementById("toolsSection")) {
-        document.getElementById("toolsSection").style.display = "none";
-    }
-    if (document.getElementById("aboutSection")) {
-        document.getElementById("aboutSection").style.display = "none";
-    }
-}
-  </script>
   <!-- PAYMENT -->
   <section id="payment" class="page" aria-label="Payment">
     <div class="top-bar">
