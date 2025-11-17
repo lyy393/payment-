@@ -230,6 +230,57 @@ background:var(--brand);color:#fff;cursor:pointer;transition:transform .2s}
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
 }
+  <head>
+  <title>Website Lyy</title>
+
+  <style>
+    /* -- TEMPATKAN CSS SUPPORT SECTION DISINI -- */
+
+    .support-section {
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      text-align: center;
+    }
+
+    .support-section h2 {
+      margin-bottom: 10px;
+      font-size: 22px;
+      color: #ffffff;
+    }
+
+    .support-desc {
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: #cccccc;
+    }
+
+    .support-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .support-form input,
+    .support-form textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      outline: none;
+      resize: none;
+    }
+
+    .support-btn {
+      width: 100%;
+      margin-top: 5px;
+    }
+
 </style>
 </head>
 <body>
@@ -264,6 +315,22 @@ background:var(--brand);color:#fff;cursor:pointer;transition:transform .2s}
     </div>
   </section>
 
+  <!-- CONTACT SUPPORT SECTION -->
+<section class="support-section">
+  <h2>Contact Support</h2>
+  <p class="support-desc">Jika kamu butuh bantuan, silakan kirim pesan melalui form di bawah ini.</p>
+
+  <form action="https://formsubmit.co/akumstokakun@gmail.com" method="POST" class="support-form">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="Pesan baru dari Website Lyy">
+
+    <input type="text" name="nama" placeholder="Nama Kamu" required>
+    <input type="email" name="email" placeholder="Email Kamu" required>
+    <textarea name="pesan" placeholder="Tulis pesan kamu..." required></textarea>
+
+    <button type="submit" class="btn support-btn">Kirim Pesan</button>
+  </form>
+</section>
   <!-- PAYMENT -->
   <section id="payment" class="page" aria-label="Payment">
     <div class="top-bar">
