@@ -277,29 +277,6 @@ background:var(--brand);color:#fff;cursor:pointer;transition:transform .2s}
   padding: 12px;
 }
 
-/* ============================= */
-/* ANIMASI BERHASIL & GAGAL     */
-/* ============================= */
-
-/* Animasi pesan berhasil (fade + naik) */
-@keyframes fadeSuccess {
-  0% { opacity: 0; transform: translateY(6px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* Animasi pesan gagal (shake) */
-@keyframes fadeError {
-  0% { transform: translateX(0); }
-  20% { transform: translateX(-4px); }
-  40% { transform: translateX(4px); }
-  60% { transform: translateX(-4px); }
-  80% { transform: translateX(4px); }
-  100% { transform: translateX(0); }
-}
-  
-/* ============================= */
-/* POPUP PESAN BERHASIL         */
-/* ============================= */
 /* POPUP SUCCESS */
 .success-popup {
   position: fixed;
